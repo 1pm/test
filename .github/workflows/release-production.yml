@@ -1,0 +1,24 @@
+name: release-production
+# on:
+#   release:
+#     types:
+#       - published
+on:
+  push:
+    tags:
+
+jobs:
+  release-production:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Push
+        run: |
+          git checkout production
+          git merge $(git describe --tags --abbrev=0)
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
