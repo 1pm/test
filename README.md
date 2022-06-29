@@ -2,4 +2,4 @@
 
 Add some readme
 
-Not THIS is cool
+Now THIS is cool
