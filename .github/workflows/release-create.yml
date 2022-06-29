@@ -27,6 +27,6 @@ jobs:
         uses: devmasx/merge-branch@1.4.0
         with:
           type: now
-          from_branch: ${{ steps.create_release.outputs.id }}
+          from_branch: ${{ steps.create_release.outputs.version }}
           target_branch: production
           github_token: ${{ secrets.GITHUB_TOKEN }}
