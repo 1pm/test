@@ -3,7 +3,7 @@ name: release-create
 on:
   push:
     branches:
-      - production
+      - main
 
 jobs:
   release-create:
@@ -14,6 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Create Release
+        id: create_release
         uses: 1pm/gh-action-release-by-commit@v1.0.0
         with:
           title: "Release: $version"
@@ -21,3 +22,11 @@ jobs:
           draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge to Production
+        if: ${{ steps.create_release.outputs.released }}
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: ${{ steps.create_release.outputs.version }}
+          target_branch: production
+          github_token: ${{ secrets.GITHUB_TOKEN }}
