@@ -29,3 +29,4 @@ jobs:
           type: now
           from_branch: ${{ steps.create_release.outputs.id }}
           target_branch: production
+          github_token: ${{ secrets.GITHUB_TOKEN }}
