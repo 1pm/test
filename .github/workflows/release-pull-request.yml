@@ -1,12 +1,15 @@
 name: release-pull-request
+
 on:
   push:
     branches:
       - 'release/**'
+
 jobs:
   release-pull-request:
-    name: Create Pull Request
+
     runs-on: ubuntu-latest
+
     steps:
       - name: release-pull-request
         uses: vsoch/pull-request-action@1.0.19
