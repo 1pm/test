@@ -19,3 +19,4 @@ jobs:
           PULL_REQUEST_BRANCH: 'main'
           PULL_REQUEST_TITLE: '${{ github.ref_name }}'
           PULL_REQUEST_BODY: 'New Release PR'
+          PULL_REQUEST_REVIEWERS: 1pm
